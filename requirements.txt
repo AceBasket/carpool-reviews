@@ -1,0 +1,5 @@
+pika
+django-extensions
+django-rest-framework
+drf-spectacular[sidecar]
+djangorestframework-simplejwt

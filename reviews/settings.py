@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,8 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'django_filters',
-    'rest_framework_swagger',
+    # 'rest_framework_swagger',
     'drf_spectacular',
     'drf_spectacular_sidecar',  # required for Django collectstatic discovery
     'django_extensions',
@@ -78,7 +78,18 @@ TEMPLATES = [
 WSGI_APPLICATION = 'reviews.wsgi.application'
 
 ROOT_URLCONF = 'reviews.urls'
-REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',}
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTStatelessUserAuthentication',
+    ],
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'SIGNING_KEY': "w3q%wwl$hu&jveli_1t+z&(q%ybf$t&%#i18o4rhcx0l)m+tkn",
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
