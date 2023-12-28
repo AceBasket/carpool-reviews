@@ -8,4 +8,5 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         """Meta class for ReviewSerializer"""
         model = Review
-        fields = '__all__'
+        exclude = ['slug']
+        lookup_field = 'slug'

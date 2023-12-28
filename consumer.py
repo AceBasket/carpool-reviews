@@ -7,7 +7,6 @@ from sys import path
 from os import environ
 
 # Your path to settings.py file
-# path.append('/Users/manol/Desktop/reviews/reviews/settings.py')
 environ.setdefault('DJANGO_SETTINGS_MODULE', 'reviews.settings')
 django.setup()
 

@@ -4,11 +4,7 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from .serializers import ReviewSerializer
 from rest_framework import permissions
-from rest_framework.response import Response
-from rest_framework import status
-from rest_framework import generics  # Add this import statement
-from .models import Review  # Add this import statement
-# import producer.py at ../producer.py
+from .models import Review
 
 
 class ReviewViewSet(viewsets.ModelViewSet):
@@ -19,3 +15,4 @@ class ReviewViewSet(viewsets.ModelViewSet):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
     permission_classes = [permissions.IsAuthenticated]
+    lookup_field = 'slug'
